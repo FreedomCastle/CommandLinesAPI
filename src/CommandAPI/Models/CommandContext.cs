@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace CommandAPI.Models
 {
