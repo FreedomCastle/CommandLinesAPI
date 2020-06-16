@@ -18,26 +18,29 @@ namespace CommandAPI.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("CommandAPI.Models.CommandAPI", b =>
+            modelBuilder.Entity("CommandAPI.Models.Command", b =>
                 {
-                    b.Property<string>("HowTo")
-                        .HasColumnType("character varying(250)")
-                        .HasMaxLength(250);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("CommandLine")
                         .IsRequired()
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
+                    b.Property<string>("HowTo")
+                        .IsRequired()
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
 
                     b.Property<string>("Platform")
                         .IsRequired()
-                        .HasColumnType("character varying(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
 
-                    b.HasKey("HowTo");
+                    b.HasKey("Id");
 
                     b.ToTable("CommandItems");
                 });

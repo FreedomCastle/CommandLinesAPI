@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CommandAPI.Migrations
 {
     [DbContext(typeof(CommandContext))]
-    [Migration("20200616015232_AddCommandsToDB")]
+    [Migration("20200616210028_AddCommandsToDB")]
     partial class AddCommandsToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,26 +20,29 @@ namespace CommandAPI.Migrations
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("CommandAPI.Models.CommandAPI", b =>
+            modelBuilder.Entity("CommandAPI.Models.Command", b =>
                 {
-                    b.Property<string>("HowTo")
-                        .HasColumnType("character varying(250)")
-                        .HasMaxLength(250);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("CommandLine")
                         .IsRequired()
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
+                    b.Property<string>("HowTo")
+                        .IsRequired()
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
 
                     b.Property<string>("Platform")
                         .IsRequired()
-                        .HasColumnType("character varying(100)")
-                        .HasMaxLength(100);
+                        .HasColumnType("character varying(250)")
+                        .HasMaxLength(250);
 
-                    b.HasKey("HowTo");
+                    b.HasKey("Id");
 
                     b.ToTable("CommandItems");
                 });

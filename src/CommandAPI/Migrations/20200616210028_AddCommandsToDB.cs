@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CommandAPI.Migrations
 {
@@ -10,14 +11,15 @@ namespace CommandAPI.Migrations
                 name: "CommandItems",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     HowTo = table.Column<string>(maxLength: 250, nullable: false),
-                    Id = table.Column<int>(nullable: false),
-                    Platform = table.Column<string>(maxLength: 100, nullable: false),
+                    Platform = table.Column<string>(maxLength: 250, nullable: false),
                     CommandLine = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CommandItems", x => x.HowTo);
+                    table.PrimaryKey("PK_CommandItems", x => x.Id);
                 });
         }
 
