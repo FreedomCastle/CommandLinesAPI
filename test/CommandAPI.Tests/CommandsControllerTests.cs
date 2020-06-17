@@ -102,5 +102,31 @@ namespace CommandAPI.Tests
             //Assert
             Assert.IsType<ActionResult<IEnumerable<Command>>>(result);
         }
+        [Fact]
+        public void GetCommandItemsReturnNItemsWhenDBHasNObjects()
+        {
+            //Arrange
+            var command = new Command
+            {
+                HowTo = "Do Something",
+                Platform = "Some Platform",
+                CommandLine = "Some Command"
+            };
+            var command2 = new Command
+            {
+                HowTo = "Do Something",
+                Platform = "Some Platform",
+                CommandLine = "Some Command"               
+            };
+            dbContext.CommandItems.Add(command);
+            dbContext.CommandItems.Add(command2);
+            dbContext.SaveChanges();
+
+            //Act
+            var result = controller.GetCommandItems();
+
+            //Assert
+            Assert.Equal(2, result.Value.Count());
+        }
     }
 }
