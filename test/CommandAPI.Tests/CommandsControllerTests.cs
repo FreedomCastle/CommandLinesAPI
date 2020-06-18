@@ -162,7 +162,8 @@ namespace CommandAPI.Tests
             var result = controller.GetCommandItem(0);
 
             //Assert
-            Assert.IsType<NotFoundResult>(result.Result);
+            // proviking error purposefuly to test the AzureOps automated testing
+            Assert.IsType<OkResult>(result.Result);
         }
 
         //2.3
