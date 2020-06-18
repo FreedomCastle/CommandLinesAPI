@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using CommandAPI.Controllers;
 using CommandAPI.Models;
 
+
+// This is a random comment to complete configuring Azure DevOps thru Github
 namespace CommandAPI.Tests
 {
     public class CommandsControllerTests : IDisposable
