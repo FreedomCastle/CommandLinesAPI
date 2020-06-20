@@ -21,7 +21,7 @@ namespace CommandAPI.Controllers
         }
 
         //Get
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public ActionResult<Command> GetCommandItem(int id)
         {
             var commandItem = _context.CommandItems.Find(id);
@@ -61,7 +61,7 @@ namespace CommandAPI.Controllers
         }
 
         //Delete
-        [HttpDelete("{id")]
+        [HttpDelete("{id}")]
         public ActionResult<Command> DeleteCommandItem(int id)
         {
             var commandItem = _context.CommandItems.Find(id);
