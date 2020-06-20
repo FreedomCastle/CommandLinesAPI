@@ -27,7 +27,13 @@ namespace CommandAPI
             builder.ConnectionString = Configuration.GetConnectionString("PostgreSqlConnection");
             builder.Username = Configuration["UserID"];
             builder.Password = Configuration["Password"];
-
+            
+            //increase timeout to Azure pgsqltut server
+            if (!builder.ConnectionString.Contains("CommandTimeout"))
+            {
+                builder.ConnectionString += $";CommandTimeout=120";
+            }
+            
             services.AddDbContext<CommandContext>(opt => opt.UseNpgsql(builder.ConnectionString));
             services.AddControllers();
         }
