@@ -16,6 +16,7 @@ namespace CommandAPI
 {
     public class Startup
     {
+        // Reminder to clean our Code
         public IConfiguration Configuration {get;}
         public Startup(IConfiguration configuration) => Configuration = configuration;
         
