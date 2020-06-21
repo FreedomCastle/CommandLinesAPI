@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CommandAPI.Controllers
 {
-    // Inserted comment to test the auto build on DevOps
     [Route("api/[controller]")]
     [ApiController]
     public class CommandsController : ControllerBase
